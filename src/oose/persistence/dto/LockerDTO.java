@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.concurrent.locks.Lock;
 
 public class LockerDTO {
-    String lockerNum;
+    int lockerNum;
     String memberId;
     String facilityName;
     Date leaseDate;
@@ -19,11 +19,11 @@ public class LockerDTO {
         this.cost = cost;
     }
 
-    public String getLockerNum() {
+    public int getLockerNum() {
         return lockerNum;
     }
 
-    public void setLockerNum(String lockerNum) {
+    public void setLockerNum(int lockerNum) {
         this.lockerNum = lockerNum;
     }
 
