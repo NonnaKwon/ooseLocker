@@ -3,6 +3,7 @@ package oose.persistence.dao;
 import oose.persistence.dto.LockerDTO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class LockerDAO {
     Statement stmt;
@@ -37,28 +38,30 @@ public class LockerDAO {
     }
 
     //기관이 일치하고, memId=null 인거를 select하기
-    public LockerDTO select(String facility){
-        LockerDTO lockerDTO = new LockerDTO();
-        int count = 0;
-        String sql = "SELECT * FROM locker WHERE facilityname=? AND memId=null";
+    public ArrayList<LockerDTO> select(String facility){
+        ArrayList<LockerDTO> list = new ArrayList<>();
         try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
+            String sql = "select * from locker where facilityname=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,facility);
+            rs = pstmt.executeQuery();
 
-            if(rs.next()){
-                count++;
+            while(rs.next()){
+                LockerDTO lockerDTO = new LockerDTO();
                 lockerDTO.setLockerNum(rs.getInt("locker_num"));
+                lockerDTO.setMemberId(rs.getString("member_id"));
                 lockerDTO.setFacilityName(rs.getString("facilityname"));
-
+                list.add(lockerDTO);
             }
-            return lockerDTO;
+
+            return list;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
 
         }
-        return lockerDTO;
+        return list;
     }
 
     //update

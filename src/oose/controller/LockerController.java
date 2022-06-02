@@ -24,15 +24,14 @@ public class LockerController implements Controller {
                 if (request.getMethod().equals("GET")) {
                     modelAndView.setViewName("/lockMng/create_locker");
                 } else if (request.getMethod().equals("POST")) {
+                    System.out.println("post 들어옴");
                     if (request.getParameter("action").equals("생성")) {
                         try {
                             String facility = request.getParameter("facility");
                             int cost = Integer.parseInt(request.getParameter("cost"));
 
                             LockerDTO lockerDTO = new LockerDTO(facility,cost);
-                            System.out.println("dto전");
                             lockerService.add(lockerDTO);
-                            System.out.println("dto후");
 
                             modelAndView.setViewName("/lockMng/create_locker");
                             PrintWriter writer = response.getWriter();

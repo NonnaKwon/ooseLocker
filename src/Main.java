@@ -1,5 +1,6 @@
 import oose.persistence.dao.LockerDAO;
 import oose.persistence.dto.LockerDTO;
+import oose.service.LockerService;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,21 +21,11 @@ public class Main {
             conn = DriverManager.getConnection(jdbcUrl, user, password);
             System.out.println("연결되었습니다");
 
+
             //테스트
-            LockerDAO dao = LockerDAO.getInstance(conn);
-            LockerDTO dto = new LockerDTO();
-            dto.setLockerNum(1);
+            LockerService ls = new LockerService();
+            ls.registerService("dd","123");
 
-            dto.setMemberId("123");
-            Calendar cal = Calendar.getInstance();
-            Date leaseDate = new Date(cal.get(Calendar.YEAR)-1900,cal.get(Calendar.MONTH),cal.get(Calendar.DATE));
-            System.out.println(leaseDate);
-            dto.setLeaseDate(leaseDate);
-            Date returnDate = new Date(cal.get(Calendar.YEAR)-1900,cal.get(Calendar.MONTH)+1,cal.get(Calendar.DATE));
-            System.out.println(returnDate);
-            dto.setReturnDate(returnDate);
-
-            dao.select("dd");
             //select만 잘 되면 끝임.
             System.out.println("완료");
 

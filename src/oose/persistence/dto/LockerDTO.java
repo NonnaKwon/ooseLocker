@@ -67,6 +67,8 @@ public class LockerDTO {
         this.cost = cost;
     }
 
-
+    public String toString(){
+        return lockerNum+","+memberId+","+facilityName+","+leaseDate+","+returnDate+","+cost;
+    }
 
 }
