@@ -30,7 +30,7 @@ public class LockerDAO {
             pstmt.setString(1, dto.getFacilityName());
             pstmt.setInt(2, dto.getCost()); // sql 실행
             resultCnt = pstmt.executeUpdate();
-            pstmt.close();
+//            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }        // 결과
@@ -82,13 +82,13 @@ public class LockerDAO {
             e.printStackTrace();
             return false;
         } finally {
-            try {
-                pstmt.close();
-                conn.close();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+//            try {
+//                pstmt.close();
+//                conn.close();
+//            } catch (SQLException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
 
         }
 

@@ -34,9 +34,8 @@ public class LockerController implements Controller {
                             lockerService.add(lockerDTO);
 
                             modelAndView.setViewName("/lockMng/create_locker");
-                            PrintWriter writer = response.getWriter();
-                            writer.println("<script>alert('성공적으로 생성되었습니다')</script>");
-                            writer.close();
+                            String pageUrl = "/mng/mngLock/create";
+                            alert(request, response, pageUrl, "성공적으로 생성 되었습니다");
                         } catch (Exception e) {
                             String pageUrl = "/mng/mngLock/create";
                             alert(request, response, pageUrl, "다시 입력바람");
@@ -57,9 +56,12 @@ public class LockerController implements Controller {
 
                             if(lockerService.registerService(facility,memId)){
                                 modelAndView.setViewName("/lockMng/register_locker");
-                                PrintWriter writer = response.getWriter();
-                                writer.println("<script>alert('성공적으로 신청되었습니다.')</script>");
-                                writer.close();
+                                String pageUrl = "/mng/mngLock/register";
+                                alert(request, response, pageUrl, "성공적으로 신청 되었습니다");
+                            }else{
+                                modelAndView.setViewName("/lockMng/register_locker");
+                                String pageUrl = "/mng/mngLock/register";
+                                alert(request, response, pageUrl, "비어있는 사물함이 없습니다");
                             }
                         } catch (Exception e) {
                             String pageUrl = "/mng/mngLock/register";

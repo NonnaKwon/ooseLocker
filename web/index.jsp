@@ -10,11 +10,35 @@
 <html>
   <head>
     <title>사물함 관리</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container{
+        width: 500px;
+        height: 380px;
+        background-color: rgb(221, 221, 221);
+        margin: 0 auto;
+      }
+
+      h1{
+        width: auto;
+        text-align: center;
+        padding: 20px 0px;
+
+      }
+
+    </style>
   </head>
   <body>
   <form action="/mng/mngLock">
-    <a href="/mng/mngLock/create">사물함 생성</a> <br>
-    <a href="/mng/mngLock/register">사물함 신청</a>
+    <div class = "container">
+      <a href="/mng/mngLock/create"><h1>사물함 생성</h1></a> <br>
+      <a href="/mng/mngLock/register"><h1>사물함 신청</h1></a>
+    </div>
   </form>
   </body>
 </html>
