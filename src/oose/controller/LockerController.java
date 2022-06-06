@@ -29,6 +29,9 @@ public class LockerController implements Controller {
                         try {
                             String facility = request.getParameter("facility");
                             int cost = Integer.parseInt(request.getParameter("cost"));
+                            if(cost > 10000 || cost < 0){
+                                throw new Exception();
+                            }
 
                             LockerDTO lockerDTO = new LockerDTO(facility,cost);
                             lockerService.add(lockerDTO);
@@ -38,7 +41,7 @@ public class LockerController implements Controller {
                             alert(request, response, pageUrl, "성공적으로 생성 되었습니다");
                         } catch (Exception e) {
                             String pageUrl = "/mng/mngLock/create";
-                            alert(request, response, pageUrl, "다시 입력바람");
+                            alert(request, response, pageUrl, "cost 다시 입력바람");
                         }
                     } else if (request.getParameter("action").equals("돌아가기")) {
                         modelAndView.setViewName("../../index");
